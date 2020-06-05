@@ -22,7 +22,9 @@ pp   #{user.userName}
   userName  : <h:inputText id="username" value="#{user.userName}"
 				rendered="true" required="true" />
 				<h:commandButton value="faces-redirect=true"
-				action="test?faces-redirect=true" />
+				action="NewFile?faces-redirect=true" />
+				<h:commandButton value="loginFOrm"
+				action="#{user.loginUser}" />
 				</h:form>
 </body>
 </html>

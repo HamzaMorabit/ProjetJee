@@ -5,23 +5,34 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.Session;
 
 
 @ManagedBean(name ="user")
 @SessionScoped
+@Entity
+@Table(name="User2")
 public class UserBean {
 
 
 	/**
 	 * 
 	 */
+	//
 	private static final long serialVersionUID = 1L;
+	
 	private String userName = " name initialization";
-	private String passWord;// same of index
+	@Id
+	private int passWord;// same of index
 
 	
 	public  UserBean() {}
 	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -30,11 +41,11 @@ public class UserBean {
 		this.userName = userName;
 	}
 
-	public String getPassWord() {
+	public int getPassWord() {
 		return passWord;
 	}
 
-	public void setPassWord(String passWord) {
+	public void setPassWord(int passWord) {
 		this.passWord = passWord;
 	}
 
@@ -64,8 +75,22 @@ public class UserBean {
 //			System.out.println("file not found");
 //			e.printStackTrace();
 //		}
-		if ("admin".equals(getUserName()) && "admin".equals(getPassWord()))
-			{System.out.println("okdd");
+		
+		Alien s = new Alien();
+		s.setIi(1); 
+		s.setMessg("HamYYYYmmmm");
+
+		try {
+			Session session = utilHib.getsession_factory_().openSession();
+			session.beginTransaction();
+
+			// session.delete(s);
+			session.save(s);
+			session.getTransaction().commit();}catch(Exception ee) {
+				System.out.println("Ex   :   " + ee);
+			}
+		if ("admin".equals(getUserName()) )
+			{System.out.println("oksssdd");
 			return "NewFile";
 		}
 			//return "success";
@@ -75,7 +100,7 @@ public class UserBean {
 //			facesContext.addMessage("loginForm", facesMessage);
 //			
 			System.out.println(" !! ok");
-			return "index";
+			return "NewFile";
 		}
 	
 }
