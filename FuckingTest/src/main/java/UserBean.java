@@ -78,14 +78,18 @@ public class UserBean {
 		
 		Alien s = new Alien();
 		s.setIi(1); 
-		s.setMessg("HamYYYYmmmm");
+		//s.setMessg("HamYYYYmmmm");
+		
+		UserBean se = new UserBean();
+		se.setPassWord(2); 
+		se.setUserName("Youssef");
 
 		try {
 			Session session = utilHib.getsession_factory_().openSession();
 			session.beginTransaction();
-
+			session.delete(s);
 			// session.delete(s);
-			session.save(s);
+			session.save(se);
 			session.getTransaction().commit();}catch(Exception ee) {
 				System.out.println("Ex   :   " + ee);
 			}

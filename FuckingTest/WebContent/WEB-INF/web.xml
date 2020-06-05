@@ -50,6 +50,26 @@
 		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 	</listener> 
   
-  
-  
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/eroor.xhtml</location>
+</error-page>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/eroor.xhtml</location>
+</error-page>
+ 
+<error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/WEB-INF/eroor.xhtml</location>
+</error-page>
+
+  <context-param>
+   <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+   <param-value>true</param-value>
+</context-param>
+
+
+
 </web-app>
